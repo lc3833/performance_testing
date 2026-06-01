@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_package = "com.performance.grpc.generated";
+option java_outer_classname = "UserProto";
+option java_multiple_files = true;
+
+package user;
+
+service UserService {
+  rpc GetSmallUser (EmptyRequest) returns (UserResponse);
+  rpc GetMediumUsers (EmptyRequest) returns (UserListResponse);
+  rpc GetLargeUsers (EmptyRequest) returns (UserListResponse);
+}
+
+message EmptyRequest {}
+
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+  int32 age = 4;
+  string address = 5;
+  string phone = 6;
+  string company = 7;
+}
+
+message UserListResponse {
+  repeated UserResponse users = 1;
+}
